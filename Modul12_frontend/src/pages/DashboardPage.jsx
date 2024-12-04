@@ -9,6 +9,7 @@ import {
 } from "react-bootstrap";
 import { GetAllContents } from "../api/apiContent";
 import { getThumbnail } from "../api";
+import { BsClock } from "react-icons/bs"; // Ikon jam
 
 const DashboardPage = () => {
   const [contents, setContents] = useState([]);
@@ -52,7 +53,7 @@ const DashboardPage = () => {
           {contents.map((content) => (
             <Col md={6} lg={4} className="mb-3" key={content.id}>
               <div
-                className="card bg-dark text-white"
+                className="card bg-dark text-white position-relative"
                 style={{ aspectRatio: "16 / 9" }}
               >
                 <img
@@ -66,6 +67,21 @@ const DashboardPage = () => {
                   </h5>
                   <p className="card-text">{content.description}</p>
                 </div>
+
+                {/* Tombol dengan ikon jam */}
+                <button
+                  className="btn btn-success position-absolute"
+                  style={{
+                    bottom: "10px",
+                    right: "10px",
+                    borderRadius: "50%",
+                    padding: "10px",
+                  }}
+                  title="Tambahkan ke Watch Later"
+                  onClick={() => console.log(`Tambah ${content.title} ke Watch Later`)}
+                >
+                  <BsClock size={20} /> {/* Ikon jam */}
+                </button>
               </div>
             </Col>
           ))}
